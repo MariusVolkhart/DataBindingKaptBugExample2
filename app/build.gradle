@@ -1,0 +1,45 @@
+buildscript {
+    repositories{
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.0-beta-4584'
+    }
+}
+
+apply plugin: 'com.android.application'
+// FIXME Comment the following line to make project compile
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.example.kotlinbinding"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding { enabled = true }
+}
+
+// FIXME Comment the following 3 lines to make project compile
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-4584'
+
+    // FIXME Comment the following line to make project compile
+    kapt 'com.android.databinding:compiler:1.0-rc4'
+}
